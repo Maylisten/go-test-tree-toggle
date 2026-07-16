@@ -1,0 +1,57 @@
+name: Bug report
+description: Report a reproducible problem with the extension
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to report a problem. Do not include private source code or secrets.
+  - type: input
+    id: vscode-version
+    attributes:
+      label: VS Code version
+      placeholder: 1.105.0
+    validations:
+      required: true
+  - type: input
+    id: extension-version
+    attributes:
+      label: Extension version
+      placeholder: 0.1.0
+    validations:
+      required: true
+  - type: dropdown
+    id: workspace-type
+    attributes:
+      label: Workspace type
+      options:
+        - Single-folder workspace
+        - Multi-root workspace
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the actual and expected behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      placeholder: |
+        1. Open ...
+        2. Click ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: settings
+    attributes:
+      label: Relevant files.exclude settings
+      render: json
+    validations:
+      required: false

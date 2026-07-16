@@ -1,0 +1,73 @@
+{
+  "name": "go-test-tree-toggle",
+  "displayName": "Go Test Tree Toggle",
+  "description": "Toggle *_test.go files in the VS Code Explorer without changing other exclude rules.",
+  "version": "0.1.0",
+  "publisher": "maylisten",
+  "author": "Mayer (Maylisten)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Maylisten/go-test-tree-toggle.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Maylisten/go-test-tree-toggle/issues"
+  },
+  "homepage": "https://github.com/Maylisten/go-test-tree-toggle#readme",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "go",
+    "test",
+    "explorer",
+    "toggle"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:goTestTreeToggle.hide",
+    "onCommand:goTestTreeToggle.show"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "goTestTreeToggle.hide",
+        "title": "Hide *_test.go Files",
+        "category": "Go Test Tree Toggle",
+        "icon": "$(eye-closed)"
+      },
+      {
+        "command": "goTestTreeToggle.show",
+        "title": "Show *_test.go Files",
+        "category": "Go Test Tree Toggle",
+        "icon": "$(eye)"
+      }
+    ],
+    "menus": {
+      "explorer/title": [
+        {
+          "command": "goTestTreeToggle.hide",
+          "when": "goTestTreeToggle.active != true",
+          "group": "navigation@100"
+        },
+        {
+          "command": "goTestTreeToggle.show",
+          "when": "goTestTreeToggle.active == true",
+          "group": "navigation@100"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "test": "node --test",
+    "package": "vsce package",
+    "verify:release": "node scripts/verify-release-version.js"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.6.2"
+  }
+}
