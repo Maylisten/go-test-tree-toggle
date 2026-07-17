@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.3
+
+- Simplify the toolbar icons to a flask outline with a centered `GO` label.
+- Keep the diagonal slash as the hidden-state indicator.
+
 ## 0.1.2
 
 - Replace the generic eye toggle with dedicated Go test file visibility icons.
