@@ -4,6 +4,18 @@ const assert = require('node:assert/strict');
 const Module = require('node:module');
 const test = require('node:test');
 
+test('Explorer title actions target the built-in file Explorer view', () => {
+  const manifest = require('../package.json');
+  const menus = manifest.contributes.menus;
+  const actions = menus['view/title'];
+
+  assert.equal(menus['explorer/title'], undefined);
+  assert.equal(actions.length, 2);
+  assert.ok(actions.every(
+    ({ when }) => when.includes('view == workbench.explorer.fileView')
+  ));
+});
+
 test('Explorer commands update and restore only the target exclude rule', async () => {
   const registeredCommands = new Map();
   const state = new Map();
