@@ -1,19 +1,43 @@
 'use strict';
 
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
 const Module = require('node:module');
+const path = require('node:path');
 const test = require('node:test');
 
 test('Explorer title actions target the built-in file Explorer view', () => {
   const manifest = require('../package.json');
   const menus = manifest.contributes.menus;
   const actions = menus['view/title'];
+  const commands = new Map(
+    manifest.contributes.commands.map((command) => [command.command, command])
+  );
 
   assert.equal(menus['explorer/title'], undefined);
   assert.equal(actions.length, 2);
   assert.ok(actions.every(
     ({ when }) => when.includes('view == workbench.explorer.fileView')
   ));
+
+  assert.deepEqual(commands.get('goTestTreeToggle.hide').icon, {
+    light: 'assets/icons/light/go-test-visible.svg',
+    dark: 'assets/icons/dark/go-test-visible.svg'
+  });
+  assert.deepEqual(commands.get('goTestTreeToggle.show').icon, {
+    light: 'assets/icons/light/go-test-hidden.svg',
+    dark: 'assets/icons/dark/go-test-hidden.svg'
+  });
+
+  for (const command of commands.values()) {
+    for (const iconPath of Object.values(command.icon)) {
+      assert.equal(
+        fs.existsSync(path.join(__dirname, '..', iconPath)),
+        true,
+        `missing icon: ${iconPath}`
+      );
+    }
+  }
 });
 
 test('Explorer commands update and restore only the target exclude rule', async () => {

@@ -2,7 +2,7 @@
   "name": "go-test-tree-toggle",
   "displayName": "Go Test Tree Toggle",
   "description": "Toggle *_test.go files in the VS Code Explorer without changing other exclude rules.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "maylisten",
   "author": "Mayer (Maylisten)",
   "license": "MIT",
@@ -38,13 +38,19 @@
         "command": "goTestTreeToggle.hide",
         "title": "Hide *_test.go Files",
         "category": "Go Test Tree Toggle",
-        "icon": "$(eye-closed)"
+        "icon": {
+          "light": "assets/icons/light/go-test-visible.svg",
+          "dark": "assets/icons/dark/go-test-visible.svg"
+        }
       },
       {
         "command": "goTestTreeToggle.show",
         "title": "Show *_test.go Files",
         "category": "Go Test Tree Toggle",
-        "icon": "$(eye)"
+        "icon": {
+          "light": "assets/icons/light/go-test-hidden.svg",
+          "dark": "assets/icons/dark/go-test-hidden.svg"
+        }
       }
     ],
     "menus": {

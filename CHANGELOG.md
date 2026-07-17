@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2
+
+- Replace the generic eye toggle with dedicated Go test file visibility icons.
+- Add matching icon variants for light and dark VS Code themes.
+
 ## 0.1.1
 
 - Fix the Explorer title-bar toggle not appearing in current VS Code versions.
