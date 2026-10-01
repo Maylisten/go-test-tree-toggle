@@ -74,6 +74,6 @@
     "verify:release": "node scripts/verify-release-version.js"
   },
   "devDependencies": {
-    "@vscode/vsce": "^3.6.2"
+    "@vscode/vsce": "^4.0.0"
   }
 }
